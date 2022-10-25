@@ -1,0 +1,147 @@
+/*
+
+- FONT SIZE(px):
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+
+--- 07 WHITESPACE(px):
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+
+- COLORS: 
+-- PRIMARY:
+Color-primary: #de6844
+Color-secondary: #ffc700
+Color-gray: #8a877e
+
+-- NEUTRAL:
+Color-white: #ffeedb
+Color-blacl: #1a1b1d
+
+*/
+
+// ------------ VARIABLES ------------ //
+$color-black: #1a1b1d;
+
+:root {
+  // TYPOGRAPHY
+  --font-primary: 'Roboto Condensed';
+  --size-x-sm: 1.2rem;
+  --size-sm: 1.6rem;
+  --size-md: 2rem;
+  --size-lg: 3rem;
+
+  // COLORS
+  --color-primary: #de6844;
+  --color-secondary: #ffc700;
+  --color-gray: #8a877e;
+
+  --color-white: #ffeedb;
+  --color-black: #1a1b1d;
+
+  // WHITESPACE
+  --m-sm: 1rem;
+  --m-md: 2rem;
+  --m-lg: 3rem;
+  --m-hg: 5rem;
+  --m-xhg: 8rem;
+}
+
+// ------------ MIXINS ------------ //
+@mixin respond($breakpoint) {
+  @if $breakpoint == tab-por {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+}
+
+// ------------ UTILITIES ------------ //
+.text-center {
+  text-align: center;
+}
+
+// ------------ BASE ------------ //
+*,
+*:is(::before, ::after) {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+
+  @include respond(tab-por) {
+    font-size: 50%;
+  }
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1;
+
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.65),
+      rgba(255, 255, 255, 0.65)
+    ),
+    url('../images/bg-img.webp');
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary-heading {
+  font-size: 5.2rem;
+  line-height: 1.3;
+}
+
+.btn,
+.btn:is(:link, :visited) {
+  padding: 1.5rem 4rem;
+  color: var(--color-black);
+  font-size: var(--size-md);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid var(--color-black);
+  border-radius: 100px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+
+  display: block;
+}
+
+.btn:hover {
+  color: #fff;
+  box-shadow: 0 1rem 3rem rgba($color-black, 0.15);
+  background-color: var(--color-black);
+  transform: translateY(-2px);
+}
+
+.btn:is(:focus, :active) {
+  outline: none;
+  transform: translateY(-1px);
+}
+
+// ------------ COMPONENT ------------ //
+.header {
+  height: 55vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .heading-container {
+    width: 38rem;
+  }
+
+  a:is(:link, :visited) {
+    align-self: center;
+  }
+}
